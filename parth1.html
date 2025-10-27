@@ -1,0 +1,852 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ganesh Bevara — MERN Stack Developer</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Meta for theme color -->
+  <meta name="theme-color" content="#0f1724" />
+<style>
+
+
+:root {
+  --bg-color: #0f1724;
+  --text-color: #e5e7eb;
+  --accent-color: #00ffff;
+  --secondary-color: #38bdf8;
+  --card-bg: #1e293b;
+  --highlight: #3b82f6;
+  --font-main: 'Inter', sans-serif;
+}
+
+/* ========== GLOBAL RESET ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+section {
+  padding: 80px 0;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--accent-color);
+  text-shadow: 0 0 10px var(--accent-color);
+}
+
+/* ========== NAVBAR ========== */
+.nav-wrap {
+  background: rgba(15, 23, 36, 0.9);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  background: var(--accent-color);
+  color: var(--bg-color);
+  font-weight: 700;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brand-text .name {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.brand-text .role {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-link {
+  color: var(--text-color);
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  color: var(--accent-color);
+  text-shadow: 0 0 5px var(--accent-color);
+}
+
+.menu-btn {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.menu-btn span {
+  width: 25px;
+  height: 2px;
+  background: var(--text-color);
+  border-radius: 2px;
+}
+
+/* ========== HERO SECTION ========== */
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 90vh;
+  padding-top: 100px;
+  gap: 40px;
+}
+
+.headline {
+  font-size: 2.8rem;
+  font-weight: 700;
+}
+
+.accent {
+  color: var(--accent-color);
+}
+
+.typing {
+  font-size: 1.3rem;
+  margin-top: 10px;
+  color: var(--secondary-color);
+}
+
+.cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.lead {
+  margin: 20px 0;
+  max-width: 500px;
+  color: #94a3b8;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: var(--accent-color);
+  color: var(--bg-color);
+}
+
+.btn.primary:hover {
+  background: var(--secondary-color);
+}
+
+.btn.ghost {
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  margin-left: 10px;
+}
+
+.btn.ghost:hover {
+  background: var(--accent-color);
+  color: var(--bg-color);
+}
+
+.contact-mini {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.contact-mini li {
+  margin: 5px 0;
+  color: #94a3b8;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 20px;
+  color: var(--text-color);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+/* ========== ABOUT SECTION ========== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.about-text p {
+  font-size: 1rem;
+  color: #cbd5e1;
+}
+
+.bullets {
+  margin-top: 20px;
+  list-style: square inside;
+  color: var(--secondary-color);
+}
+
+.stat {
+  text-align: center;
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+}
+
+.stat h3 {
+  color: var(--accent-color);
+  font-size: 1.8rem;
+}
+
+/* ========== EXPERIENCE SECTION ========== */
+.timeline {
+  position: relative;
+  margin: 20px 0;
+  border-left: 2px solid var(--accent-color);
+  padding-left: 30px;
+}
+
+.timeline-item {
+  margin-bottom: 40px;
+}
+
+.timeline-item .time {
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+
+.timeline-item .content h3 {
+  margin: 5px 0;
+  font-size: 1.2rem;
+  color: var(--accent-color);
+}
+
+/* ========== PROJECTS SECTION ========== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+  transition: 0.3s;
+}
+
+.project-card:hover {
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+  transform: translateY(-5px);
+}
+
+.project-meta {
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+/* ========== SKILLS SECTION ========== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.skill-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.skill-bar {
+  width: 100%;
+  height: 8px;
+  background: #1e293b;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.skill-fill {
+  height: 100%;
+  background: var(--accent-color);
+  width: 0;
+  transition: width 2s ease;
+}
+
+/* ========== CONTACT SECTION ========== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.contact-card, .contact-form-card {
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 10px;
+}
+
+.contact-form-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-form-card input,
+.contact-form-card textarea {
+  background: #0f1724;
+  border: 1px solid #1e293b;
+  color: var(--text-color);
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.contact-form-card input:focus,
+.contact-form-card textarea:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.form-msg {
+  margin-top: 5px;
+  color: var(--accent-color);
+  font-size: 0.9rem;
+}
+
+/* ========== FOOTER ========== */
+.footer {
+  background: #0b1220;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  text-align: center;
+  color: #94a3b8;
+}
+
+.footer-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.socials a {
+  margin: 0 8px;
+  color: var(--text-color);
+}
+
+.socials a:hover {
+  color: var(--accent-color);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-grid,
+  .skills-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: var(--card-bg);
+    position: absolute;
+    right: 0;
+    top: 60px;
+    width: 200px;
+    border-radius: 10px;
+    text-align: right;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .menu-btn {
+    display: flex;
+  }
+}
+</style>
+
+</head>
+<body class="dark-theme">
+
+  <!-- NAVBAR -->
+  <header class="nav-wrap">
+    <div class="nav container">
+      <div class="brand">
+        <div class="logo">GB</div>
+        <div class="brand-text">
+          <span class="name">Ganesh Bevara</span>
+          <small class="role">MERN Stack Developer</small>
+        </div>
+      </div>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero container">
+    <div class="hero-left">
+      <h1 class="headline">Hi, I'm <span class="accent">Ganesh</span></h1>
+      <h2 class="typing"><span id="typingText"></span><span class="cursor">|</span></h2>
+      <p class="lead">
+        MERN Stack Developer — building responsive web & mobile apps with React, Node & MongoDB. Passionate about clean code,
+        performance, and user-centered interfaces.
+      </p>
+
+      <div class="hero-ctas">
+        <a class="btn primary" href="#projects">View Projects</a>
+        <a class="btn ghost" href="ganeshbevara.pdf" download>Download Resume</a>
+      </div>
+
+      <ul class="contact-mini">
+        <li><i class="fa-solid fa-envelope"></i> ganeshbevara600@gmail.com</li>
+        <li><i class="fa-solid fa-phone"></i> 9493406550</li>
+        <li><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/feed/" target="_blank" rel="noopener">linkedin.com/in/ganesh-bevara</a></li>
+      </ul>
+    </div>
+
+    <div class="hero-right">
+      <div class="card bio-card">
+        <div class="card-header">
+          <!-- <div class="avatar">G</div> -->
+          <div>
+            <h3>Ganesh Bevara</h3>
+            <small>MERN Stack Developer</small>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <p><strong>Location:</strong> Hyderabad, India</p>
+          <p><strong>Education:</strong> B.Sc Computer Science — Andhra University (2022–2025)</p>
+          <p><strong>Focus:</strong> React.js, React Native, Node.js, MongoDB, AWS</p>
+        </div>
+
+        <div class="card-footer stats">
+          <div><strong>Experience</strong><span>2025 - Present</span></div>
+          <div><strong>Projects</strong><span>Healthcare App, Feedback System</span></div>
+        </div>
+      </div>
+
+      <div class="glow-card">
+        <h4>Featured Project</h4>
+        <p><strong>Healthcare App</strong> — virtual consultations, booking, EMR, telemedicine. React / React Native / Node / MongoDB / AWS.</p>
+        <a href="#projects" class="small-link">See details →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="container section about">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I’m a MERN Stack developer experienced in building responsive web and mobile applications. I work across the full
+          stack: React.js for the frontend, Node/Express for APIs, and MongoDB for data. I enjoy optimizing performance,
+          improving user experience, and following Agile workflows to deliver quality software.
+        </p>
+
+        <ul class="bullets">
+          <li>RESTful APIs with Node.js & Express</li>
+          <li>JWT Authentication & secure systems</li>
+          <li>MongoDB schema design & query optimization</li>
+          <li>Deployed apps on AWS (EC2)</li>
+        </ul>
+      </div>
+
+      <div class="about-stats">
+        <div class="stat">
+          <h3>40k+</h3>
+          <p>Users secured (JWT)</p>
+        </div>
+        <div class="stat">
+          <h3>2+</h3>
+          <p>Major projects</p>
+        </div>
+        <div class="stat">
+          <h3>100%</h3>
+          <p>Team collaboration</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="container section">
+    <h2 class="section-title">Experience</h2>
+
+    <div class="timeline">
+      <article class="timeline-item">
+        <div class="time">Feb 2025 - Present</div>
+        <div class="content">
+          <h3>Aakruti Software Solutions — MERN Stack Developer</h3>
+          <ul>
+            <li>Built responsive web & mobile apps using React and React Native.</li>
+            <li>Designed and implemented RESTful APIs with Node.js & Express.</li>
+            <li>Optimized MongoDB queries to improve response time.</li>
+            <li>Integrated JWT authentication for 40,000+ users.</li>
+            <li>Worked across SDLC using Agile methodologies.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="timeline-item">
+        <div class="time">Project</div>
+        <div class="content">
+          <h3>Healthcare App</h3>
+          <p>User-focused app for scheduling consultations, telemedicine, EMR, and feedback management.</p>
+          <p><strong>Tech:</strong> React.js, React Native, Node.js, MongoDB, AWS</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="container section">
+    <h2 class="section-title">Projects</h2>
+
+    <div class="projects-grid">
+      <div class="project-card">
+        <h4>Healthcare App</h4>
+        <p>Virtual consultations, scheduling, EMR. Built with React & React Native, Node, MongoDB & AWS.</p>
+        <div class="project-meta">React • React Native • Node • MongoDB • Express</div>
+      </div>
+
+      <div class="project-card">
+        <h4>Feedback Management System</h4>
+        <p>Platform for doctors to collect and respond to patient reviews and ratings.</p>
+        <div class="project-meta">React • Node • MongoDB</div>
+      </div>
+
+      <!-- placeholder cards -->
+      <div class="project-card muted">
+        <h4>Other Work</h4>
+        <p>Contributions to appointment scheduling, queue management, and patient portals.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="container section">
+    <h2 class="section-title">Skills</h2>
+
+    <div class="skills-grid">
+      <div class="skill">
+        <div class="skill-head"><strong>JavaScript</strong><span>80%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-fill="90"></div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-head"><strong>React.js / React Native</strong><span>85%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-fill="85"></div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-head"><strong>Node.js / Express</strong><span>70%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-fill="80"></div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-head"><strong>MongoDB</strong><span>78%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-fill="78"></div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-head"><strong>HTML5 & CSS3</strong><span>95%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-fill="95"></div></div>
+      </div>
+
+      <div class="skill">
+        <div class="skill-head"><strong>Tailwind / Bootstrap</strong><span>75%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-fill="75"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education" class="container section">
+    <h2 class="section-title">Education</h2>
+    <div class="edu-card">
+      <h3>Andhra University, Visakhapatnam</h3>
+      <p>Bachelor Degree (Computer Science) — July 2022 – May 2025 — CGPA: 7.0</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="container section">
+    <h2 class="section-title">Contact</h2>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h4>Get in touch</h4>
+        <p>Email: <a href="mailto:ganeshbevara600@gmail.com">ganeshbevara600@gmail.com</a></p>
+        <p>Phone: 9493406550</p>
+        <p>Location: Hyderabad, India</p>
+        <p><a href="https://www.linkedin.com/in/raju-bevara" target="_blank" rel="noopener">LinkedIn Profile</a></p>
+      </div>
+
+      <div class="contact-form-card">
+        <h4>Quick Message</h4>
+        <form id="contactForm" onsubmit="return false;">
+          <input type="text" id="name" placeholder="Your name" required />
+          <input type="email" id="email" placeholder="Your email" required />
+          <textarea id="message" rows="4" placeholder="Your message" required></textarea>
+          <button id="sendBtn" class="btn primary">Send Message</button>
+          <p id="formMsg" class="form-msg" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-flex">
+      <div>© 2025 Ganesh Bevara</div>
+      <div class="socials">
+        <a href="https://github.com/Bevara-ganesh"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/feed/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script >
+   
+
+// ====== NAV MENU TOGGLE ======
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", () => {
+  navLinks.classList.toggle("open");
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+      const typingText = document.getElementById("typingText");
+
+      const textArray = [
+        { text: "Frontend Developer", color: "#ab05f2" },
+        { text: "React.js Expert", color: "#95e625" },
+        { text: "MERN Stack Developer", color: "#ee05f2" },
+        { text: "Creative Problem Solver", color: "#f2e205" }
+      ];
+
+      let textIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+
+      function typeEffect() {
+        const current = textArray[textIndex];
+        const fullText = current.text;
+
+        // Use innerHTML for colored text
+        typingText.innerHTML = `<span style="color: ${current.color};">${fullText.substring(0, charIndex)}</span>`;
+
+        // Typing logic
+        if (!isDeleting && charIndex < fullText.length) {
+          charIndex++;
+          setTimeout(typeEffect, 100);
+        } else if (isDeleting && charIndex > 0) {
+          charIndex--;
+          setTimeout(typeEffect, 50);
+        } else if (charIndex === fullText.length) {
+          isDeleting = true;
+          setTimeout(typeEffect, 1200);
+        } else if (charIndex === 0) {
+          isDeleting = false;
+          textIndex = (textIndex + 1) % textArray.length;
+          setTimeout(typeEffect, 500);
+        }
+      }
+
+      typeEffect();
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ====== SCROLL REVEAL ANIMATION ======
+window.addEventListener("scroll", () => {
+  const sections = document.querySelectorAll(".section, .project-card, .skill");
+  const triggerBottom = window.innerHeight * 0.85;
+
+  sections.forEach((sec) => {
+    const secTop = sec.getBoundingClientRect().top;
+    if (secTop < triggerBottom) {
+      sec.classList.add("visible");
+    }
+  });
+});
+
+// ====== SKILL BAR ANIMATION ======
+function animateSkills() {
+  const skillBars = document.querySelectorAll(".skill-fill");
+  const triggerBottom = window.innerHeight * 0.8;
+
+  skillBars.forEach((bar) => {
+    const top = bar.getBoundingClientRect().top;
+    if (top < triggerBottom) {
+      const fillValue = bar.getAttribute("data-fill");
+      bar.style.width = fillValue + "%";
+    }
+  });
+}
+
+window.addEventListener("scroll", animateSkills);
+window.addEventListener("load", animateSkills);
+
+// ====== CONTACT FORM HANDLER ======
+const contactForm = document.getElementById("contactForm");
+const formMsg = document.getElementById("formMsg");
+
+contactForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  if (!name || !email || !message) {
+    formMsg.textContent = "⚠️ Please fill in all fields.";
+    formMsg.style.color = "#f87171";
+    return;
+  }
+
+  // Just for demo (you can connect with backend/email API later)
+  formMsg.textContent = "✅ Thank you, " + name + "! Your message has been sent.";
+  formMsg.style.color = "#00ffff";
+
+  // Reset fields
+  contactForm.reset();
+
+  setTimeout(() => {
+    formMsg.textContent = "";
+  }, 4000);
+});
+
+// ====== SMOOTH SCROLL ======
+const smoothLinks = document.querySelectorAll('a[href^="#"]');
+smoothLinks.forEach((link) => {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    if (target) {
+      window.scrollTo({
+        top: target.offsetTop - 60,
+        behavior: "smooth",
+      });
+      navLinks.classList.remove("open"); // close menu on mobile
+    }
+  });
+});
+
+  </script>
+</body>
+</html>
